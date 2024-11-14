@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Your Online Learning Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #004696;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: start;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        #search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        #search-bar input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #search-bar button {
+            padding: 5px 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #search-bar button:hover {
+            background-color: #357abd;
+        }
+        #login-dashboard {
+            display: flex;
+            align-items: center;
+        }
+        #login-dashboard p {
+            margin: 0;
+            margin-right: 10px;
+            color: white;
+        }
+        #login-dashboard button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #login-dashboard button:hover {
+            background-color: #357abd;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            text-align: center;
+        }
+        .container img {
+            max-width: 20%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            nav ul li {
+                margin-right: 8px;
+            }
+            #search-bar input[type="text"] {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header >
+        <h1>Edope Learner</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="e-exam.html">e-Exam</a></li>
+            <li><a href="openforum.html">OpenForum</a></li>
+            <li><a href="e-repository.html">e-Repository</a></li>
+            <li><a href="myWall.html">MyWall</a></li>
+        </ul>
+        <div id="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div id="login-dashboard">
+            
+            <button onclick="window.location.href='/login.html'">Login</button>
+            <button onclick="window.location.href='/registration.html'">Register</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="home">
+            <img src="/Homeimg2.png" alt="Online Learning">
+            <p>Edope Learner is your gateway to a world of online learning. We provide a comprehensive platform for students and educators to connect, learn, and grow together. Our services include online exams, open forums for discussion, a vast e-repository of learning materials, and personal learning walls for each user.</p>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © 2024 EduConnect</p>
+        <a href="#">About Us</a> | <a href="#">Contact</a> | <a href="#">Privacy Policy</a>
+    </footer>
+</body>
+</html>

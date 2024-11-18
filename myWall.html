@@ -4,44 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wall - User Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: "Poppins", sans-serif;
             line-height: 1.6;
-            background-color: #f5f7fa;
+            background: linear-gradient(135deg, #e9f0fa, #fdfbff);
             color: #333;
         }
 
-        /* Header Styles */
-        .header {
-            background: linear-gradient(45deg, #4a90e2, #357abd);
-            padding: 1rem 2rem;
+        header {
+            background: linear-gradient(90deg, #004696, #5a92e3);
             color: white;
+            padding: 25px 0;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
         }
-
-        .nav-links a {
+        
+        nav ul li a {
             color: white;
             text-decoration: none;
-            margin-left: 1.5rem;
             font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Main Content Layout */
+        /* Profile Sidebar */
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -51,13 +82,13 @@
             gap: 2rem;
         }
 
-        /* Profile Sidebar */
         .profile-sidebar {
-            background: white;
+            background: #fff;
             border-radius: 10px;
             padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
             height: fit-content;
+            text-align: center;
         }
 
         .profile-image {
@@ -67,19 +98,12 @@
             margin: 0 auto 1.5rem;
             display: block;
             background-color: #e0e0e0;
-            border: 5px solid #4a90e2;
+            border: 5px solid #004696;
             object-fit: cover;
         }
 
         .profile-info h1 {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .profile-info p {
-            color: #666;
-            margin-bottom: 0.5rem;
+            color: #004696;
         }
 
         .contact-info {
@@ -88,12 +112,7 @@
             border-top: 1px solid #eee;
         }
 
-        .contact-info h3 {
-            color: #4a90e2;
-            margin-bottom: 1rem;
-        }
-
-        /* Main Content Area */
+        /* Main Content */
         .main-content {
             display: flex;
             flex-direction: column;
@@ -101,124 +120,36 @@
         }
 
         .section {
-            background: white;
+            background: #fff;
             border-radius: 10px;
             padding: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
         }
 
         .section h2 {
-            color: #4a90e2;
+            color: #004696;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
             border-bottom: 2px solid #eee;
         }
 
-        /* Skills Section */
-        .skills-grid {
+        .skills-grid, .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .skill-item {
-            background: #f8f9fa;
-            padding: 0.75rem;
-            border-radius: 5px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-
-        /* Resume Section */
-        .resume-preview {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-
-        .resume-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
         }
 
         .btn {
             padding: 0.5rem 1rem;
+            background-color: #4a90e2;
+            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: #4a90e2;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            color: white;
         }
 
         .btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        /* Education & Experience */
-        .timeline {
-            margin-top: 1rem;
-        }
-
-        .timeline-item {
-            padding: 1rem;
-            border-left: 2px solid #4a90e2;
-            margin-left: 1rem;
-            position: relative;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: #4a90e2;
-            border-radius: 50%;
-            position: absolute;
-            left: -7px;
-            top: 1.5rem;
-        }
-
-        .timeline-item h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item p {
-            color: #666;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 5px;
-            padding: 1rem;
-            border: 1px solid #eee;
-        }
-
-        .project-card h4 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+            background-color: #357abd;
         }
 
         /* Responsive Design */
@@ -226,141 +157,117 @@
             .container {
                 grid-template-columns: 1fr;
             }
+        }
+        footer {
+            background: #333;
+            color: #bbb;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
 
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: 500;
+        }
 
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">Edope Learner</div>
-        <nav class="nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">Messages</a>
-            <a href="#">Settings</a>
-            <a href="#">Logout</a>
-        </nav>
+    <header>
+        <h1>My Wall - User Profile</h1>
     </header>
+    <nav>
+        <ul>
+            <li><a href="./index.html"><span>🏠</span> Home</a></li>
+            <li><a href="#"><span>📑</span> e-Exam</a></li>
+            <li><a href="#"><span>💬</span> OpenForum</a></li>
+            <li><a href="#"><span>📚</span> e-Repository</a></li>
+            <li><a href="#"><span>🖼️</span> MyWall</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
-        <!-- Profile Sidebar -->
         <aside class="profile-sidebar">
-            <img src="/Exam_bgimg.png" alt="Profile Picture" class="profile-image">
+            <img src="./Exam_bgimg.png" alt="Profile Picture" class="profile-image">
             <div class="profile-info">
-                <h1>JP Morgan</h1>
+                <h1>Aarav Mehta</h1>
                 <p>Software Developer</p>
-                <p>New York, USA</p>
-                
+                <p>Mumbai, India</p>
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>📧 jp.morgan@email.com</p>
-                    <p>📱 +91 9182736405</p>
-                    <p>🔗 linkedin.com/in/jpmorgan</p>
-                    <p>💻 github.com/jpm</p>
+                    <p>📧 aarav.mehta@email.com</p>
+                    <p>📱 +91 9876543210</p>
+                    <p>🔗 linkedin.com/in/aaravmehta</p>
+                    <p>💻 github.com/aaravmehta</p>
                 </div>
             </div>
         </aside>
 
-        <!-- Main Content Area -->
         <main class="main-content">
-            <!-- About Section -->
             <section class="section">
                 <h2>About Me</h2>
-                <p>Passionate software developer with 5+ years of experience in web development. Specializing in front-end technologies and user experience design. Always eager to learn new technologies and tackle challenging projects.</p>
+                <p>Passionate software developer with 5+ years of experience in web development. Specializing in front-end technologies and user experience design.</p>
             </section>
 
-            <!-- Skills Section -->
             <section class="section">
                 <h2>Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-item">JavaScript</div>
-                    <div class="skill-item">React.js</div>
-                    <div class="skill-item">Node.js</div>
-                    <div class="skill-item">Python</div>
-                    <div class="skill-item">SQL</div>
-                    <div class="skill-item">AWS</div>
-                    <div class="skill-item">Docker</div>
-                    <div class="skill-item">Git</div>
+                    <div>JavaScript</div>
+                    <div>React.js</div>
+                    <div>Node.js</div>
+                    <div>Python</div>
+                    <div>SQL</div>
+                    <div>AWS</div>
+                    <div>Docker</div>
+                    <div>Git</div>
                 </div>
             </section>
 
-            <!-- Resume Section -->
             <section class="section">
                 <h2>Resume</h2>
-                <div class="resume-preview">
-                    <p>JohnDoe_Resume.pdf</p>
-                    <div class="resume-actions">
-                        <button class="btn btn-primary">Download Resume</button>
-                        <button class="btn btn-secondary">Update Resume</button>
-                        <!--<input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx"> -->
-                    </div>
+                <div>
+                    <p>AaravMehta_Resume.pdf</p>
+                    <button class="btn">Download Resume</button>
+                    <button class="btn">Update Resume</button>
                 </div>
             </section>
 
-            <!-- Education Section -->
             <section class="section">
                 <h2>Education</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>Master of Computer Science</h4>
-                        <p>Stanford University</p>
-                        <p>2018 - 2020</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>Bachelor of Engineering</h4>
-                        <p>MIT</p>
-                        <p>2014 - 2018</p>
-                    </div>
+                    <div>Master of Computer Science, Indian Institute of Technology (IIT), Bombay (2018 - 2020)</div>
+                    <div>Bachelor of Engineering, Delhi Technological University (2014 - 2018)</div>
                 </div>
             </section>
 
-            <!-- Experience Section -->
             <section class="section">
                 <h2>Experience</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>Senior Software Developer</h4>
-                        <p>Tech Corp Inc.</p>
-                        <p>2020 - Present</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h4>Software Developer</h4>
-                        <p>Innovation Labs</p>
-                        <p>2018 - 2020</p>
-                    </div>
+                    <div>Senior Software Developer, Tata Consultancy Services (2020 - Present)</div>
+                    <div>Software Developer, Infosys (2018 - 2020)</div>
                 </div>
             </section>
 
-            <!-- Projects Section -->
             <section class="section">
                 <h2>Projects</h2>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <h4>E-commerce Platform</h4>
-                        <p>Built a full-stack e-commerce platform using MERN stack</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>AI Chat Bot</h4>
-                        <p>Developed an AI-powered chatbot using Python and TensorFlow</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>Portfolio Website</h4>
-                        <p>Designed and developed a responsive portfolio website</p>
-                    </div>
+                    <div>E-commerce Platform - MERN Stack</div>
+                    <div>AI Chat Bot - Python & TensorFlow</div>
+                    <div>Portfolio Website - Responsive Design</div>
                 </div>
             </section>
         </main>
     </div>
+    <footer>
+        <p>&copy; 2024 Edope Learner</p>
+    </footer>
 </body>
 </html>

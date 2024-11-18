@@ -1,34 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>e-Exam - Edope Learner</title>
-    <link rel="stylesheet" href="pages.css">
-</head>
-<body>
+    <link rel="stylesheet" href="pages.css" />
+    <style>
+      /* Modal styles */
+      #examModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+      #examModal:target {
+        display: flex;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 300px;
+        text-align: center;
+      }
+      .modal-content h3 {
+        margin: 0 0 10px;
+      }
+      .modal-content p {
+        margin-bottom: 20px;
+      }
+      .modal-content a {
+        text-decoration: none;
+        color: white;
+        background-color: #007bff;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+      .close-btn {
+        text-decoration: none;
+        color: #333;
+        font-size: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>e-Exam</h1>
+      <h1>e-Exam</h1>
     </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="./index.html"><span>🏠</span> Home</a>
+        </li>
+        <li>
+          <a href="./e-exam.html"><span>📑</span> e-Exam</a>
+        </li>
+        <li>
+          <a href="./openforum.html"><span>💬</span> OpenForum</a>
+        </li>
+        <li>
+          <a href="./e-repository.html"><span>📚</span> e-Repository</a>
+        </li>
+        <li>
+          <a href="./myWall.html"><span>🖼️</span> MyWall</a>
+        </li>
+      </ul>
+      <div id="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button>Search</button>
+      </div>
+      <div id="login-dashboard">
+        <button onclick="window.location.href='./login.html'">Login</button>
+        <button onclick="window.location.href='./registration.html'">
+          Register
+        </button>
+      </div>
+    </nav>
     <div class="container">
-        <h2>Welcome to the e-Exam Portal</h2>
-        <p>Discover online exams, track your progress, and elevate your learning experience.</p>
+      <h2>Welcome to the e-Exam Portal</h2>
+      <p>
+        Discover online exams, track your progress, and elevate your learning
+        experience.
+      </p>
 
-        <div class="card">
-            <h3>Exam 1: Introduction to HTML</h3>
-            <p>Test your knowledge of basic HTML structures and tags.</p>
-        </div>
-        <div class="card">
-            <h3>Exam 2: CSS Fundamentals</h3>
-            <p>Assess your understanding of CSS styling and layouts.</p>
-        </div>
-        <div class="card">
-            <h3>Exam 3: JavaScript Basics</h3>
-            <p>Evaluate your grasp of JavaScript syntax and logic.</p>
-        </div>
+      <!-- Exam Cards with links to open the modal -->
+      <div class="card">
+        <a href="#examModal" id="examLink1">
+          <h3>Exam 1: Introduction to HTML</h3>
+          <p>Test your knowledge of basic HTML structures and tags.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#examModal" id="examLink2">
+          <h3>Exam 2: CSS Fundamentals</h3>
+          <p>Assess your understanding of CSS styling and layouts.</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#examModal" id="examLink3">
+          <h3>Exam 3: JavaScript Basics</h3>
+          <p>Evaluate your grasp of JavaScript syntax and logic.</p>
+        </a>
+      </div>
     </div>
+
+    <!-- Modal -->
+    <div id="examModal">
+      <div class="modal-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h3>Start Exam</h3>
+        <p>Are you ready to start this exam?</p>
+        <a href="./instr.html">Yes, Start Exam</a>
+      </div>
+    </div>
+
     <footer>
-        <p>&copy; 2024 Edope Learner</p>
+      <p>&copy; 2024 Edope Learner</p>
     </footer>
-</body>
+  </body>
 </html>

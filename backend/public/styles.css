@@ -1,0 +1,36 @@
+/* External styles for EduConnect */
+
+/* Element selectors */
+body {
+    background-color: #f0f0f0;
+}
+
+h1, h2, h3 {
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* ID selector */
+#home {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Class selectors */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0564fd;
+}

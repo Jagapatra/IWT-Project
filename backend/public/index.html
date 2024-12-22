@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduConnect - Your Online Learning Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #e9f0fa, #fdfbff);
+        color: #333;
+      }
+      header {
+        background: linear-gradient(
+          90deg,
+          #004696,
+          #5a92e3
+        );
+        color: white;
+        text-align: center;
+        padding: 25px 0;
+        width: 100%;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      /* Navigation Bar */
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background 0.3s;
+      }
+      nav ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Search Bar */
+      #search-bar {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+      #search-bar input[type="text"] {
+        width: 180px;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+      }
+      #search-bar button {
+        padding: 8px 15px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      #search-bar button:hover {
+        background-color: #357abd;
+      }
+
+      /* Login Dashboard */
+      #login-dashboard button {
+        padding: 8px 15px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background 0.3s;
+      }
+      #login-dashboard button:hover {
+        background-color: #357abd;
+      }
+
+      /* Container */
+      .container {
+        max-width: 800px;
+        margin: 30px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .container img {
+        max-width: 40%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .container p {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 20px;
+        line-height: 1.8;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #bbb;
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+      footer a {
+        color: #4a90e2;
+        text-decoration: none;
+        margin: 0 8px;
+        font-weight: 500;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          gap: 10px;
+        }
+        #search-bar input[type="text"] {
+          width: 150px;
+        }
+        .container {
+          padding: 20px;
+          width: 90%;
+        }
+        .container img {
+          max-width: 60%;
+        }
+      }
+    </style>
+  </head>
+  <body style="background-image: url('./Untitled\ design.png'); background-size: 80%; background-repeat: no-repeat; background-position-x: 21rem; background-position-y: 2
+  rem;">
+    <header>
+      <h1>Edope Learner</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href=""><span>🏠</span> Home</a>
+        </li>
+        <li>
+          <a href="./e-exam.html"><span>📑</span> e-Exam</a>
+        </li>
+        <li>
+          <a href="./openforum.html"><span>💬</span> OpenForum</a>
+        </li>
+        <li>
+          <a href="./e-repository.html"><span>📚</span> e-Repository</a>
+        </li>
+        <li>
+          <a href="./myWall.html"><span>🖼️</span> MyWall</a>
+        </li>
+      </ul>
+      <div id="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button>Search</button>
+      </div>
+      <div id="login-dashboard">
+        <button onclick="window.location.href='./login.html'">Login</button>
+        <button onclick="window.location.href='./registration.html'">
+          Register
+        </button>
+      </div>
+    </nav>
+    <div 
+  class="container" 
+  style="
+    display: flex; 
+    flex-direction: row-reverse; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 2rem; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  "
+>
+  <img 
+    src="./Homeimg2.png" 
+    alt="Online Learning" 
+    style="
+      width: 300px; 
+      height: auto; 
+      border-radius: 8px; 
+      margin-left: 2rem;
+    "
+  />
+  <div 
+    class="content" 
+    style="max-width: 600px; text-align: left;"
+  >
+  <h1 
+  style="
+    font-family: 'Poppins', sans-serif; 
+    color: #333; 
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  "
+>
+  <span 
+    style="
+      font-size: 1.5rem; 
+      font-weight: 400; 
+      color: #555;
+    "
+  >
+    Welcome to
+  </span>
+  <br />
+  <span 
+    style="
+      font-size: 2.5rem; 
+      font-weight: 700; 
+      background: linear-gradient(90deg, #004696, #5a92e3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    "
+  >
+    EDOPE LEARNER
+  </span>
+</h1>
+
+
+    <p 
+      style="
+        font-size: 1.2rem; 
+        font-family: 'Roboto', sans-serif; 
+        line-height: 1.6; 
+        color: #555;
+      "
+    >
+      Your comprehensive platform for online education. Connect, learn, and grow with access to exams, discussion forums, a repository of resources, and personalized learning walls.
+    </p>
+  </div>
+</div>
+
+<footer 
+style="
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  background-color: black; 
+  color: white; 
+  text-align: center; 
+  padding: 1rem; 
+  font-family: 'Roboto', sans-serif; 
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+"
+>
+<p style="margin: 0; font-size: 1rem;">Copyright © 2024 EduConnect</p>
+<div style="margin-top: 0.5rem;">
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">About Us</a> |
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a>
+</div>
+</footer>
+
+  </body>
+</html>

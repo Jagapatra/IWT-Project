@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Wall - User Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #e9f0fa, #fdfbff);
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(90deg, #004696, #5a92e3);
+        color: white;
+        padding: 25px 0;
+        text-align: center;
+        width: 100%;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      /* Navigation Bar */
+      nav {
+        background-color: #333;
+        color: white;
+        width: 100%;
+        padding: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background 0.3s;
+      }
+
+      nav ul li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Search Bar */
+      #search-bar {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+
+      #search-bar input[type="text"] {
+        width: 180px;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-right: 10px;
+      }
+
+      #search-bar button {
+        padding: 8px 15px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      #search-bar button:hover {
+        background-color: #357abd;
+      }
+      #login-dashboard button {
+        padding: 8px 15px;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background 0.3s;
+      }
+
+      #login-dashboard button:hover {
+        background-color: #357abd;
+      }
+
+      /* Profile Sidebar */
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+      }
+
+      .profile-sidebar {
+        background: #fff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        display: block;
+        background-color: #e0e0e0;
+        border: 5px solid #004696;
+        object-fit: cover;
+      }
+
+      .profile-info h1 {
+        color: #004696;
+      }
+
+      .contact-info {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+      }
+
+      /* Main Content */
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .section {
+        background: #fff;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section h2 {
+        color: #004696;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #eee;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .btn:hover {
+        background-color: #357abd;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+      }
+      footer {
+        background: #333;
+        color: #bbb;
+        text-align: center;
+        padding: 15px 0;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 0.9rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      footer a {
+        color: #4a90e2;
+        text-decoration: none;
+        margin: 0 8px;
+        font-weight: 500;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Wall - User Profile</h1>
+    </header>
+    <nav>
+      <ul>
+        <li>
+          <a href="./index.html"><span>🏠</span> Home</a>
+        </li>
+        <li>
+          <a href="./e-exam.html"><span>📑</span> e-Exam</a>
+        </li>
+        <li>
+          <a href="./openforum.html"><span>💬</span> OpenForum</a>
+        </li>
+        <li>
+          <a href="./e-repository.html"><span>📚</span> e-Repository</a>
+        </li>
+        <li>
+          <a href="./myWall.html"><span>🖼️</span> MyWall</a>
+        </li>
+      </ul>
+      <div id="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button>Search</button>
+      </div>
+      <div id="login-dashboard">
+        <button onclick="window.location.href='./login.html'">Login</button>
+        <button onclick="window.location.href='./registration.html'">
+          Register
+        </button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <aside class="profile-sidebar">
+        <img
+          src="./Exam_bgimg.png"
+          alt="Profile Picture"
+          class="profile-image"
+        />
+        <div class="profile-info">
+          <h1>Aarav Mehta</h1>
+          <p>Software Developer</p>
+          <p>Mumbai, India</p>
+          <div class="contact-info">
+            <p>📧 aarav.mehta@email.com</p>
+            <p>📱 +91 9876543210</p>
+            <p>🔗 linkedin.com/in/aaravmehta</p>
+            <p>💻 github.com/aaravmehta</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section class="section">
+          <h2>About Me</h2>
+          <p>
+            Passionate software developer with 5+ years of experience in web
+            development. Specializing in front-end technologies and user
+            experience design.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Skills</h2>
+          <div class="skills-grid">
+            <div>JavaScript</div>
+            <div>React.js</div>
+            <div>Node.js</div>
+            <div>Python</div>
+            <div>SQL</div>
+            <div>AWS</div>
+            <div>Docker</div>
+            <div>Git</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Resume</h2>
+          <div>
+            <p>AaravMehta_Resume.pdf</p>
+            <button class="btn">Download Resume</button>
+            <button class="btn">Update Resume</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Education</h2>
+          <div class="timeline">
+            <div>
+              Master of Computer Science, Indian Institute of Technology (IIT),
+              Bombay (2018 - 2020)
+            </div>
+            <div>
+              Bachelor of Engineering, Delhi Technological University (2014 -
+              2018)
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <div>
+              Senior Software Developer, Tata Consultancy Services (2020 -
+              Present)
+            </div>
+            <div>Software Developer, Infosys (2018 - 2020)</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Projects</h2>
+          <div class="projects-grid">
+            <div>E-commerce Platform - MERN Stack</div>
+            <div>AI Chat Bot - Python & TensorFlow</div>
+            <div>Portfolio Website - Responsive Design</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p>&copy; 2024 Edope Learner</p>
+    </footer>
+  </body>
+</html>

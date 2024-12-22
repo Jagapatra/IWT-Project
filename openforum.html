@@ -4,7 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenForum - Edope Learner</title>
-    <link rel="stylesheet" href="pages.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #e9f0fa, #fdfbff);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #004696, #5a92e3);
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            width: 100%;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Bar - Kept the same as index.html */
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        #search-bar input[type="text"] {
+            width: 180px;
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-right: 10px;
+        }
+
+        #search-bar button, #login-dashboard button {
+            padding: 8px 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-left: 10px;
+        }
+
+        #search-bar button:hover, #login-dashboard button:hover {
+            background-color: #357abd;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 1rem;
+        }
+
+        .create-post {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-post textarea {
+            width: 100%;
+            height: 100px;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .post-actions button {
+            padding: 8px 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .post-actions button:hover {
+            background-color: #357abd;
+        }
+
+        .forum-post {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+        }
+
+        .user-info h4 {
+            margin: 0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .user-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+        }
+
+        .post-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-attachments {
+            background: #f0f2f5;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .reactions {
+            display: flex;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .reaction-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a90e2;
+            transition: color 0.3s;
+        }
+
+        .reaction-btn:hover {
+            color: #357abd;
+        }
+
+        .comments-section {
+            margin-top: 1rem;
+        }
+
+        .comment {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+
+        .comment-content {
+            background: #f0f2f5;
+            padding: 0.5rem;
+            border-radius: 8px;
+            flex-grow: 1;
+        }
+
+        .reply {
+            margin-left: 3rem;
+            border-left: 2px solid #4a90e2;
+            padding-left: 1rem;
+        }
+
+        .comment-input {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .comment-input input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Footer - Matched with index.html */
+        footer {
+            position:relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        footer div {
+            margin-top: 0.5rem;
+        }
+
+        footer a {
+            color: #5a92e3;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #search-bar input[type="text"] {
+                width: 150px;
+            }
+
+            .container {
+                padding: 20px;
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,52 +320,112 @@
     </header>
     <nav>
         <ul>
-          <li>
-            <a href="./index.html"><span>🏠</span> Home</a>
-          </li>
-          <li>
-            <a href="./e-exam.html"><span>📑</span> e-Exam</a>
-          </li>
-          <li>
-            <a href="./openforum.html"><span>💬</span> OpenForum</a>
-          </li>
-          <li>
-            <a href="./e-repository.html"><span>📚</span> e-Repository</a>
-          </li>
-          <li>
-            <a href="./myWall.html"><span>🖼️</span> MyWall</a>
-          </li>
+            <li><a href="./index.html"><span>🏠</span> Home</a></li>
+            <li><a href="./e-exam.html"><span>📑</span> e-Exam</a></li>
+            <li><a href="./openforum.html"><span>💬</span> OpenForum</a></li>
+            <li><a href="./e-repository.html"><span>📚</span> e-Repository</a></li>
+            <li><a href="./myWall.html"><span>🖼️</span> MyWall</a></li>
         </ul>
         <div id="search-bar">
-          <input type="text" placeholder="Search..." />
-          <button>Search</button>
+            <input type="text" placeholder="Search..." />
+            <button>Search</button>
         </div>
         <div id="login-dashboard">
-          <button onclick="window.location.href='./login.html'">Login</button>
-          <button onclick="window.location.href='./registration.html'">
-            Register
-          </button>
+            <button onclick="window.location.href='./login.html'">Login</button>
+            <button onclick="window.location.href='./registration.html'">Register</button>
         </div>
-      </nav>
-    <div class="container">
-        <h2>Discussion Topics</h2>
-        <p>Engage in meaningful conversations and knowledge sharing with peers.</p>
+    </nav>
 
-        <div class="card">
-            <h3>Topic 1: HTML Best Practices</h3>
-            <p>Discuss the best approaches for structuring and maintaining HTML code.</p>
+    <div class="container">
+        <div class="create-post">
+            <h3>Start a Discussion</h3>
+            <textarea placeholder="Share your knowledge or ask a question..."></textarea>
+            <div class="post-actions">
+                <button><span>📷</span> Add Image</button>
+                <button><span>📎</span> Attach File</button>
+                <button><span>📝</span> Post</button>
+            </div>
         </div>
-        <div class="card">
-            <h3>Topic 2: Responsive CSS Design</h3>
-            <p>Explore techniques to make your CSS layouts adaptable across devices.</p>
+
+        <!-- Sample Post 1 -->
+        <div class="forum-post">
+            <div class="post-header">
+                <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                <div class="user-info">
+                    <h4>Sarah Chen</h4>
+                    <p>Full Stack Developer | Building scalable web applications</p>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Just completed a deep dive into React's new Server Components. Here's what I learned about improving initial page load performance...</p>
+                <img src="/api/placeholder/800/400" alt="React Components Diagram" class="post-image">
+                <div class="post-attachments">
+                    <span>📄 react-server-components.pdf</span>
+                </div>
+            </div>
+            <div class="reactions">
+                <button class="reaction-btn">👍 Like (24)</button>
+                <button class="reaction-btn">🎯 Helpful (15)</button>
+                <button class="reaction-btn">💡 Insightful (8)</button>
+            </div>
+            <div class="comments-section">
+                <div class="comment">
+                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <div class="comment-content">
+                        <h4>Alex Kumar</h4>
+                        <p>Great explanation! Have you encountered any issues with data fetching in Server Components?</p>
+                    </div>
+                </div>
+                <div class="comment reply">
+                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <div class="comment-content">
+                        <h4>Sarah Chen</h4>
+                        <p>Initially yes, but I found that using React Suspense helped manage the loading states effectively.</p>
+                    </div>
+                </div>
+                <div class="comment-input">
+                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <input type="text" placeholder="Write a comment...">
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <h3>Topic 3: JavaScript Frameworks</h3>
-            <p>Share opinions and experiences with popular JavaScript frameworks.</p>
+
+        <!-- Sample Post 2 -->
+        <div class="forum-post">
+            <div class="post-header">
+                <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                <div class="user-info">
+                    <h4>Marcus Johnson</h4>
+                    <p>DevOps Engineer | Cloud Architecture Enthusiast</p>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Sharing my experience with implementing CI/CD pipelines using GitHub Actions. Here's a template that you might find useful...</p>
+                <div class="post-attachments">
+                    <span>📄 github-actions-template.yml</span>
+                </div>
+            </div>
+            <div class="reactions">
+                <button class="reaction-btn">👍 Like (18)</button>
+                <button class="reaction-btn">🎯 Helpful (12)</button>
+                <button class="reaction-btn">💡 Insightful (5)</button>
+            </div>
+            <div class="comments-section">
+                <div class="comment-input">
+                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <input type="text" placeholder="Write a comment...">
+                </div> 
+            </div>
         </div>
     </div>
+
     <footer>
-        <p>&copy; 2024 Edope Learner</p>
+        <p>Copyright © 2024 EduConnect</p>
+        <div>
+            <a href="#">About Us</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Privacy Policy</a>
+        </div>
     </footer>
 </body>
 </html>

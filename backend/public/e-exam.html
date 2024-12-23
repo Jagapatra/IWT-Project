@@ -49,6 +49,24 @@
         top: 10px;
         right: 10px;
       }
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #bbb;
+        text-align: center;
+        padding: 15px;
+        font-size: 0.9rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+      footer a {
+        color: #4a90e2;
+        text-decoration: none;
+        margin: 0 8px;
+        font-weight: 500;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
@@ -122,8 +140,26 @@
       </div>
     </div>
 
-    <footer>
-      <p>&copy; 2024 Edope Learner</p>
-    </footer>
+    <footer 
+style="
+  position:relative; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  background-color: black; 
+  color: white; 
+  text-align: center; 
+  padding: 1rem; 
+  font-family: 'Roboto', sans-serif; 
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+"
+>
+<p style="margin: 0; font-size: 1rem;">Copyright © 2024 EduConnect</p>
+<div style="margin-top: 0.5rem;">
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">About Us</a> |
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">Contact</a> |
+  <a href="#" style="color: #5a92e3; text-decoration: none; margin: 0 0.5rem;">Privacy Policy</a>
+</div>
+</footer>
   </body>
 </html>

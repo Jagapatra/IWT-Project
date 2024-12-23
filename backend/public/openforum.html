@@ -320,19 +320,24 @@
     </header>
     <nav>
         <ul>
-            <li><a href="./index.html"><span>🏠</span> Home</a></li>
-            <li><a href="./e-exam.html"><span>📑</span> e-Exam</a></li>
-            <li><a href="./openforum.html"><span>💬</span> OpenForum</a></li>
-            <li><a href="./e-repository.html"><span>📚</span> e-Repository</a></li>
-            <li><a href="./myWall.html"><span>🖼️</span> MyWall</a></li>
+          <li><a href="./index.html">🏠 Home</a></li>
+          <li><a href="./e-exam.html">📑 e-Exam</a></li>
+          <li><a href="./openforum.html">💬 OpenForum</a></li>
+          <li><a href="./e-repository.html">📚 e-Repository</a></li>
+          <li><a href="./myWall.html">🖼️ MyWall</a></li>
         </ul>
         <div id="search-bar">
             <input type="text" placeholder="Search..." />
             <button>Search</button>
         </div>
+        <!-- Updated login/user dashboard section -->
         <div id="login-dashboard">
             <button onclick="window.location.href='./login.html'">Login</button>
             <button onclick="window.location.href='./registration.html'">Register</button>
+        </div>
+        <div id="user-dashboard" style="display: none;">
+            <span style="color: white; margin-right: 10px;">Welcome, <span id="user-name"></span>!</span>
+            <button id="logout-button" style="background-color: #357abd;">Logout</button>
         </div>
     </nav>
 
@@ -350,7 +355,7 @@
         <!-- Sample Post 1 -->
         <div class="forum-post">
             <div class="post-header">
-                <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                 <div class="user-info">
                     <h4>Sarah Chen</h4>
                     <p>Full Stack Developer | Building scalable web applications</p>
@@ -358,7 +363,7 @@
             </div>
             <div class="post-content">
                 <p>Just completed a deep dive into React's new Server Components. Here's what I learned about improving initial page load performance...</p>
-                <img src="/api/placeholder/800/400" alt="React Components Diagram" class="post-image">
+                <img src="./Exam_bgimg.png" alt="React Components Diagram" class="post-image">
                 <div class="post-attachments">
                     <span>📄 react-server-components.pdf</span>
                 </div>
@@ -370,21 +375,21 @@
             </div>
             <div class="comments-section">
                 <div class="comment">
-                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                     <div class="comment-content">
                         <h4>Alex Kumar</h4>
                         <p>Great explanation! Have you encountered any issues with data fetching in Server Components?</p>
                     </div>
                 </div>
                 <div class="comment reply">
-                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                     <div class="comment-content">
                         <h4>Sarah Chen</h4>
                         <p>Initially yes, but I found that using React Suspense helped manage the loading states effectively.</p>
                     </div>
                 </div>
                 <div class="comment-input">
-                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                     <input type="text" placeholder="Write a comment...">
                 </div>
             </div>
@@ -393,7 +398,7 @@
         <!-- Sample Post 2 -->
         <div class="forum-post">
             <div class="post-header">
-                <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                 <div class="user-info">
                     <h4>Marcus Johnson</h4>
                     <p>DevOps Engineer | Cloud Architecture Enthusiast</p>
@@ -412,7 +417,7 @@
             </div>
             <div class="comments-section">
                 <div class="comment-input">
-                    <img src="/api/placeholder/40/40" alt="User Avatar" class="user-avatar">
+                    <img src="./Exam_bgimg.png" alt="User Avatar" class="user-avatar">
                     <input type="text" placeholder="Write a comment...">
                 </div> 
             </div>
@@ -428,4 +433,6 @@
         </div>
     </footer>
 </body>
+<script src="./open.js"></script>
+
 </html>

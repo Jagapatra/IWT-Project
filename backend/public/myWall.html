@@ -230,60 +230,79 @@
         text-decoration: underline;
       }
     </style>
+    <script>
+      // Load user profile dynamically
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const response = await fetch("http://localhost:8000/auth/status", {
+            credentials: "include",
+          });
+
+          const data = await response.json();
+
+          if (data.isAuthenticated) {
+            const { name, email } = data.user;
+
+            document.getElementById("profile-name").textContent = name;
+            document.getElementById("profile-email").textContent = email;
+            document.getElementById("profile-section").style.display = "block";
+            document.getElementById("login-section").style.display = "none";
+          } else {
+            document.getElementById("profile-section").style.display = "none";
+            document.getElementById("login-section").style.display = "block";
+          }
+        } catch (error) {
+          console.error("Error fetching profile data:", error);
+        }
+      });
+
+      function logout() {
+        fetch("http://localhost:8000/logout", {
+          method: "POST",
+          credentials: "include",
+        })
+          .then((response) => response.json())
+          .then(() => {
+            window.location.reload();
+          })
+          .catch((error) => console.error("Error logging out:", error));
+      }
+    </script>
   </head>
   <body>
     <header>
-      <h1>My Wall </h1>
+      <h1>My Wall</h1>
     </header>
     <nav>
       <ul>
-        <li>
-          <a href="./index.html"><span>🏠</span> Home</a>
-        </li>
-        <li>
-          <a href="./e-exam.html"><span>📑</span> e-Exam</a>
-        </li>
-        <li>
-          <a href="./openforum.html"><span>💬</span> OpenForum</a>
-        </li>
-        <li>
-          <a href="./e-repository.html"><span>📚</span> e-Repository</a>
-        </li>
-        <li>
-          <a href="./myWall.html"><span>🖼️</span> MyWall</a>
-        </li>
+        <li><a href="./index.html">🏠 Home</a></li>
+        <li><a href="./e-exam.html">📑 e-Exam</a></li>
+        <li><a href="./openforum.html">💬 OpenForum</a></li>
+        <li><a href="./e-repository.html">📚 e-Repository</a></li>
+        <li><a href="./myWall.html">🖼️ MyWall</a></li>
       </ul>
-      <div id="search-bar">
-        <input type="text" placeholder="Search..." />
-        <button>Search</button>
-      </div>
-      <div id="login-dashboard">
-        <button onclick="window.location.href='./login.html'">Login</button>
-        <button onclick="window.location.href='./registration.html'">
-          Register
-        </button>
-      </div>
     </nav>
 
-    <div class="container">
-      <aside class="profile-sidebar">
-        <img
-          src="./Exam_bgimg.png"
-          alt="Profile Picture"
-          class="profile-image"
-        />
-        <div class="profile-info">
-          <h1>Aarav Mehta</h1>
-          <p>Software Developer</p>
-          <p>Mumbai, India</p>
-          <div class="contact-info">
-            <p>📧 aarav.mehta@email.com</p>
-            <p>📱 +91 9876543210</p>
-            <p>🔗 linkedin.com/in/aaravmehta</p>
-            <p>💻 github.com/aaravmehta</p>
+    <div id="login-section" style="text-align: center; margin-top: 20px;">
+      <p>You are not logged in.</p>
+      <button onclick="window.location.href='./login.html'">Login</button>
+      <button onclick="window.location.href='./registration.html'">Register</button>
+    </div>
+
+    <div id="profile-section" style="display: none;">
+      <div class="container">
+        <aside class="profile-sidebar">
+          <img
+            src="./Exam_bgimg.png"
+            alt="Profile Picture"
+            class="profile-image"
+          />
+          <div class="profile-info">
+            <h1 id="profile-name">Loading...</h1>
+            <p id="profile-email">Loading...</p>
           </div>
-        </div>
-      </aside>
+          <button class="btn" onclick="logout()">Logout</button>
+        </aside>
 
       <main class="main-content">
         <section class="section">

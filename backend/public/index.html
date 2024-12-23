@@ -259,33 +259,26 @@
     </header>
     <nav>
       <ul>
-        <li>
-          <a href="./index.html"><span>🏠</span> Home</a>
-        </li>
-        <li>
-          <a href="./e-exam.html"><span>📑</span> e-Exam</a>
-        </li>
-        <li>
-          <a href="./openforum.html"><span>💬</span> OpenForum</a>
-        </li>
-        <li>
-          <a href="./e-repository.html"><span>📚</span> e-Repository</a>
-        </li>
-        <li>
-          <a href="./myWall.html"><span>🖼️</span> MyWall</a>
-        </li>
+        <li><a href="./index.html">🏠 Home</a></li>
+        <li><a href="./e-exam.html">📑 e-Exam</a></li>
+        <li><a href="./openforum.html">💬 OpenForum</a></li>
+        <li><a href="./e-repository.html">📚 e-Repository</a></li>
+        <li><a href="./myWall.html">🖼️ MyWall</a></li>
       </ul>
       <div id="search-bar">
-        <input type="text" placeholder="Search..." />
-        <button>Search</button>
+          <input type="text" placeholder="Search..." />
+          <button>Search</button>
       </div>
+      <!-- Updated login/user dashboard section -->
       <div id="login-dashboard">
-        <button onclick="window.location.href='./login.html'">Login</button>
-        <button onclick="window.location.href='./registration.html'">
-          Register
-        </button>
+          <button onclick="window.location.href='./login.html'">Login</button>
+          <button onclick="window.location.href='./registration.html'">Register</button>
       </div>
-    </nav>
+      <div id="user-dashboard" style="display: none;">
+          <span style="color: white; margin-right: 10px;">Welcome, <span id="user-name"></span>!</span>
+          <button id="logout-button" style="background-color: #357abd;">Logout</button>
+      </div>
+  </nav>
     <div 
   class="container" 
   style="
@@ -411,4 +404,52 @@ style="
 </footer>
 
   </body>
+  <script>
+    // Add this script to handle authentication state
+    document.addEventListener('DOMContentLoaded', function() {
+        checkAuthStatus();
+
+        function checkAuthStatus() {
+            fetch('http://localhost:8000/auth/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const loginDashboard = document.getElementById('login-dashboard');
+                const userDashboard = document.getElementById('user-dashboard');
+                
+                if (data.isAuthenticated) {
+                    // User is logged in
+                    loginDashboard.style.display = 'none';
+                    userDashboard.style.display = 'flex';
+                    document.getElementById('user-name').textContent = data.user.name;
+                } else {
+                    // User is not logged in
+                    loginDashboard.style.display = 'flex';
+                    userDashboard.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error checking auth status:', error);
+            });
+        }
+
+        // Handle logout
+        document.getElementById('logout-button')?.addEventListener('click', function() {
+            fetch('http://localhost:8000/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "Logged out successfully") {
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                console.error('Error logging out:', error);
+            });
+        });
+    });
+    </script>
 </html>

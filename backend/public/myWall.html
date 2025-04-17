@@ -281,7 +281,20 @@
         <li><a href="./e-repository.html">📚 e-Repository</a></li>
         <li><a href="./myWall.html">🖼️ MyWall</a></li>
       </ul>
-    </nav>
+      <div id="search-bar">
+          <input type="text" placeholder="Search..." />
+          <button>Search</button>
+      </div>
+      <!-- Updated login/user dashboard section -->
+      <div id="login-dashboard">
+          <button onclick="window.location.href='./login.html'">Login</button>
+          <button onclick="window.location.href='./registration.html'">Register</button>
+      </div>
+      <div id="user-dashboard" style="display: none;">
+          <span style="color: white; margin-right: 10px;">Welcome, <span id="user-name"></span>!</span>
+          <button id="logout-button" style="background-color: #357abd;">Logout</button>
+      </div>
+  </nav>
 
     <div id="login-section" style="text-align: center; margin-top: 20px;">
       <p>You are not logged in.</p>
@@ -331,7 +344,7 @@
         <section class="section">
           <h2>Resume</h2>
           <div>
-            <p>AaravMehta_Resume.pdf</p>
+            <p>Saurav_Resume.pdf</p>
             <button class="btn">Download Resume</button>
             <button class="btn">Update Resume</button>
           </div>
@@ -394,4 +407,52 @@ style="
 </div>
 </footer>
   </body>
+  <script>
+    // Add this script to handle authentication state
+    document.addEventListener('DOMContentLoaded', function() {
+        checkAuthStatus();
+  
+        function checkAuthStatus() {
+            fetch('http://localhost:8000/auth/status', {
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const loginDashboard = document.getElementById('login-dashboard');
+                const userDashboard = document.getElementById('user-dashboard');
+                
+                if (data.isAuthenticated) {
+                    // User is logged in
+                    loginDashboard.style.display = 'none';
+                    userDashboard.style.display = 'flex';
+                    document.getElementById('user-name').textContent = data.user.name;
+                } else {
+                    // User is not logged in
+                    loginDashboard.style.display = 'flex';
+                    userDashboard.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error checking auth status:', error);
+            });
+        }
+  
+        // Handle logout
+        document.getElementById('logout-button')?.addEventListener('click', function() {
+            fetch('http://localhost:8000/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === "Logged out successfully") {
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                console.error('Error logging out:', error);
+            });
+        });
+    });
+    </script>
 </html>
